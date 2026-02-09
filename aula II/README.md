@@ -1,53 +1,56 @@
-# Projeto de Gestão de Funcionários e Autenticação
+# Aula II - Fundamentos de OO: Abstração, Polimorfismo e Interfaces
 
-Este projeto é uma implementação em Java baseada em um diagrama UML discutido em sala de aula de Programação. Ele demonstra conceitos de Orientação a Objetos como herança, polimorfismo, classes abstratas e interfaces.
+Este diretório contém a implementação de um sistema de gestão simples, desenvolvido para exercitar conceitos fundamentais da Programação Orientada a Objetos (POO).
 
-## Estrutura do Projeto
+## 🎯 Objetivos da Aula
 
-O código fonte está localizado na pasta `src/` e contém as seguintes principais estruturas:
+- Compreender e aplicar **Herança** e **Polimorfismo**.
+- Utilizar **Classes Abstratas** para definir modelos genéricos.
+- Implementar **Interfaces** para contratos de comportamento (como autenticação e departamentos).
+- Modelar relacionamentos entre classes representando Funcionários, Clientes e Fornecedores.
 
-### Interfaces
-- **`Autenticavel`**: Define o contrato para classes que permitem login (`Diretor`, `Gerente`, `Cliente`).
-- **`Departamento`**: Define métodos para gestão de departamentos.
-- **`Fornecedor`**: Define métodos para gestão de fornecedores.
+## 🏗️ Estrutura das Classes
 
-### Classes Abstratas
-- **`Funcionario`**: Classe base para todos os tipos de funcionários. Contém atributos comuns como `nome` e `salarioBase` e o método abstrato `calcSalario()`.
-- **`Pessoa`**: Classe base representando uma pessoa com dados como `nome`, `cpf`, `telefone` e `endereco`.
+### Hierarquia Principal
+- **`Pessoa`**: Classe base abstrata contendo atributos comuns (`nome`, `documento`) para todos os indivíduos do sistema.
+  - **`Funcionario`**: Classe abstrata que estende `Pessoa`. Define o contrato para cálculo de salário e comissão, além de implementar a interface `Departamento`.
+    - **`Gerente`**: Implementação concreta de funcionário. É também `Autenticavel`.
+    - **`Diretor`**: Implementação concreta de funcionário (cargo superior). É também `Autenticavel`.
+    - **`Engenheiro`**: Implementação concreta de funcionário técnico.
+    - **`Secretario`**: Implementação concreta de funcionário administrativo.
+  - **`Cliente`**: Estende `Pessoa`. Representa um cliente externo que também pode atuar como `Fornecedor` e é `Autenticavel`.
 
-### Classes Concretas (Funcionários)
-- **`Secretario`**: Funcionário com cálculo de salário padrão.
-- **`Engenheiro`**: Funcionário com bonificação/comissão calculada sobre o salário.
-- **`Diretor`**: Funcionário que também é `Autenticavel` (possui login).
-- **`Gerente`**: Funcionário que também é `Autenticavel` (possui login).
+### Interfaces (Contratos)
+- **`Autenticavel`**: Define o método `login()`. Implementada por `Gerente`, `Diretor` e `Cliente`.
+- **`Departamento`**: Define métodos para gestão de departamento (`getNomeDepartamento`, `setNomeDepartamento`). Obrigatória para `Funcionario`.
+- **`Fornecedor`**: Define operações de fornecimento (`fornecerProdutos`, `emitirNotaFiscal`). Implementada por `Cliente`.
 
-### Outras Classes
-- **`Cliente`**: Implementa `Autenticavel`, representando um usuário externo ao quadro de funcionários.
-- **`App`**: Classe principal (`main`) que instancia os objetos e demonstra o funcionamento do sistema.
+## 💻 Exemplo de Uso (Main)
 
-## Funcionalidades
+A classe `Main.java` demonstra:
+1. Instanciação de objetos (Diretores, Engenheiros, Clientes).
+2. Uso de polimorfismo para tratar diferentes objetos (`Diretor`, `Cliente`) sob a mesma ótica da interface `Autenticavel`.
+3. Chamada de métodos específicos definidos pelas interfaces implementadas.
 
-O sistema permite:
-1. Calcular salários de diferentes tipos de funcionários, aplicando regras específicas (ex: comissão para engenheiros).
-2. Autenticar usuários (Diretores, Gerentes e Clientes) através de login e senha.
-3. Gerenciar informações básicas de Pessoas, Departamentos e Fornecedores.
+## 🚀 Como Executar
 
-## Como Executar
-
-1. Certifique-se de ter o Java (JDK) instalado.
-2. Compile os arquivos na pasta `src`:
+1. Certifique-se de ter o Java instalado.
+2. Navegue até o diretório `src`:
    ```bash
-   javac -d bin src/*.java
+   cd "d:\if 4º periodo\padroes-de-projetos\aula II\src"
    ```
-3. Execute a classe principal:
+3. Compile os arquivos:
    ```bash
-   java -cp bin App
+   javac *.java
+   ```
+4. Execute a classe principal:
+   ```bash
+   java Main
    ```
 
-## Tecnologias Utilizadas
+## 🛠️ Tecnologias
 - Java
 - Visual Studio Code
 
 ---
-*Projeto desenvolvido para a disciplina de Padrões de Projeto.*
-# padroes-de-projetos
+*Projeto desenvolvido para a disciplina de Padrões de Projeto - 5º Período.*
