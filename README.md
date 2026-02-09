@@ -1,4 +1,4 @@
-# 📚 Padrões de Projetos - 4º Período
+# 📚 Padrões de Projetos - 5º Período
 
 Bem-vindo(a)! Este repositório foi criado para armazenar e organizar todas as atividades e trabalhos acadêmicos desenvolvidos durante a disciplina de **Padrões de Projetos**.
 
