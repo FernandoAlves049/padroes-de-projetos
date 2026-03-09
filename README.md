@@ -1,53 +1,22 @@
-# Projeto de Gestão de Funcionários e Autenticação
+# 📚 Padrões de Projetos - 5º Período
 
-Este projeto é uma implementação em Java baseada em um diagrama UML discutido em sala de aula de Programação. Ele demonstra conceitos de Orientação a Objetos como herança, polimorfismo, classes abstratas e interfaces.
+Bem-vindo(a)! Este repositório foi criado para armazenar e organizar todas as atividades e trabalhos acadêmicos desenvolvidos durante a disciplina de **Padrões de Projetos**.
 
-## Estrutura do Projeto
+## 🚀 Objetivo
 
-O código fonte está localizado na pasta `src/` e contém as seguintes principais estruturas:
+O objetivo deste projeto é documentar o meu progresso e aprendizado, servindo como um portfólio das soluções implementadas para os problemas propostos em aula.
 
-### Interfaces
-- **`Autenticavel`**: Define o contrato para classes que permitem login (`Diretor`, `Gerente`, `Cliente`).
-- **`Departamento`**: Define métodos para gestão de departamentos.
-- **`Fornecedor`**: Define métodos para gestão de fornecedores.
+## 📂 Estrutura do Projeto
 
-### Classes Abstratas
-- **`Funcionario`**: Classe base para todos os tipos de funcionários. Contém atributos comuns como `nome` e `salarioBase` e o método abstrato `calcSalario()`.
-- **`Pessoa`**: Classe base representando uma pessoa com dados como `nome`, `cpf`, `telefone` e `endereco`.
+Os arquivos estão organizados em pastas correspondentes a cada aula ou módulo:
 
-### Classes Concretas (Funcionários)
-- **`Secretario`**: Funcionário com cálculo de salário padrão.
-- **`Engenheiro`**: Funcionário com bonificação/comissão calculada sobre o salário.
-- **`Diretor`**: Funcionário que também é `Autenticavel` (possui login).
-- **`Gerente`**: Funcionário que também é `Autenticavel` (possui login).
+- **aula II/**: Contém implementações relacionadas a conceitos de Orientação a Objetos (Herança, Polimorfismo, Classes Abstratas), incluindo exemplos com Funcionários, Clientes e Autenticação.
+- **UML/**: Diagramas ilustrativos da arquitetura das soluções.
 
-### Outras Classes
-- **`Cliente`**: Implementa `Autenticavel`, representando um usuário externo ao quadro de funcionários.
-- **`App`**: Classe principal (`main`) que instancia os objetos e demonstra o funcionamento do sistema.
+## 🛠️ Tecnologias
 
-## Funcionalidades
+- **Java**: Linguagem principal utilizada.
 
-O sistema permite:
-1. Calcular salários de diferentes tipos de funcionários, aplicando regras específicas (ex: comissão para engenheiros).
-2. Autenticar usuários (Diretores, Gerentes e Clientes) através de login e senha.
-3. Gerenciar informações básicas de Pessoas, Departamentos e Fornecedores.
+## 📌 Status
 
-## Como Executar
-
-1. Certifique-se de ter o Java (JDK) instalado.
-2. Compile os arquivos na pasta `src`:
-   ```bash
-   javac -d bin src/*.java
-   ```
-3. Execute a classe principal:
-   ```bash
-   java -cp bin App
-   ```
-
-## Tecnologias Utilizadas
-- Java
-- Visual Studio Code
-
----
-*Projeto desenvolvido para a disciplina de Padrões de Projeto.*
-# padroes-de-projetos
+🚧 Em desenvolvimento constante ao longo do semestre. 🚧
