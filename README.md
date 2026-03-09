@@ -11,7 +11,8 @@ O objetivo deste projeto é documentar o meu progresso e aprendizado, servindo c
 Os arquivos estão organizados em pastas correspondentes a cada aula ou módulo:
 
 - **aula II/**: Contém implementações relacionadas a conceitos de Orientação a Objetos (Herança, Polimorfismo, Classes Abstratas), incluindo exemplos com Funcionários, Clientes e Autenticação.
-- **UML/**: Diagramas ilustrativos da arquitetura das soluções.
+- **aula III/**: Aborda os princípios SOLID (SRP, OCP, LSP, ISP, DIP) com exemplos de implementações corretas e incorretas para cada princípio.
+
 
 ## 🛠️ Tecnologias
 
