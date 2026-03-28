@@ -1,0 +1,89 @@
+classDiagram
+    direction TB
+
+    namespace View {
+        class MenuConsole {
+            +main()
+            -cadastrarLivro()
+            -listarLivros()
+            -realizarEmprestimo()
+        }
+    }
+
+    namespace Controller {
+        class BibliotecaController {
+            -LivroBO livroBO
+            -EmprestimoBO emprestimoBO
+            +cadastrarLivro(String, String) : String
+            +realizarEmprestimo(int, String) : String
+            +listarLivrosDisponiveis() : List~Livro~
+        }
+    }
+
+    namespace BusinessObjects {
+        class LivroBO {
+            -LivroDAO livroDAO
+            +cadastrarLivro(Livro)
+            +excluirLivro(int)
+        }
+        class EmprestimoBO {
+            -EmprestimoDAO emprestimoDAO
+            -LivroDAO livroDAO
+            +realizarEmprestimo(int, String)
+            +devolverLivro(int)
+        }
+    }
+
+    namespace Persistence {
+        class LivroDAO {
+            <<interface>>
+            +salvar(Livro)
+            +buscarPorId(int) : Livro
+            +atualizar(Livro)
+            +excluir(int)
+        }
+        class LivroMemoryDAO {
+            -static List~Livro~ dados
+        }
+        class EmprestimoDAO {
+            <<interface>>
+            +salvar(Emprestimo)
+            +buscarPorLivroId(int) : Emprestimo
+        }
+        class EmprestimoMemoryDAO {
+            -static List~Emprestimo~ dados
+        }
+    }
+
+    namespace Models {
+        class Livro {
+            +int id
+            +String titulo
+            +String autor
+            +boolean disponivel
+        }
+        class Emprestimo {
+            +int id
+            +int idLivro
+            +String nomeLeitor
+            +LocalDate dataEmprestimo
+        }
+    }
+
+    %% Relacionamentos
+    MenuConsole --> BibliotecaController : Usa
+    BibliotecaController --> LivroBO : Aciona
+    BibliotecaController --> EmprestimoBO : Aciona
+    
+    BibliotecaController ..> Livro : Cria
+    
+    LivroBO --> LivroDAO : Usa
+    EmprestimoBO --> EmprestimoDAO : Usa
+    EmprestimoBO --> LivroDAO : Usa
+    
+    LivroMemoryDAO ..|> LivroDAO : Implementa
+    EmprestimoMemoryDAO ..|> EmprestimoDAO : Implementa
+    
+    LivroBO ..> Livro : Manipula
+    EmprestimoBO ..> Emprestimo : Manipula
+    EmprestimoBO ..> Livro : Atualiza Status

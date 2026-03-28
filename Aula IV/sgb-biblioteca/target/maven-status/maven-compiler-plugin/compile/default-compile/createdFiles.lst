@@ -1,0 +1,5 @@
+br\edu\ifgoiano\dao\EmprestimoDAO.class
+br\edu\ifgoiano\dao\LivroDAO.class
+br\edu\ifgoiano\model\Livro.class
+br\edu\ifgoiano\model\Emprestimo.class
+br\edu\ifgoiano\App.class
