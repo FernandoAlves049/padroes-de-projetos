@@ -5,13 +5,10 @@ public class Login {
     private String usuario;
     private String senha;
 
-    // Construtor privado para impedir instanciação externa
     private Login() {
         this.usuario = "admin";
         this.senha = "12345";
     }
-
-    // Método público estático que retorna a única instância da classe
     public static Login getInstancia() {
         if (instancia == null) {
             instancia = new Login();
@@ -19,7 +16,6 @@ public class Login {
         return instancia;
     }
 
-    // Gera um código de verificação (Captcha) com números e símbolos aleatórios
     public String gerarCodigoVerificador() {
         String caracteres = "0123456789!@#$%&*+?";
         StringBuilder codigo = new StringBuilder();
@@ -32,7 +28,6 @@ public class Login {
         return codigo.toString();
     }
 
-    // Método para autenticar o usuário
     public boolean autenticar(String usuarioDigitado, String senhaDigitada, String codigoDigitado, String codigoGerado) {
         if (!this.usuario.equals(usuarioDigitado) || !this.senha.equals(senhaDigitada)) {
             System.out.println("Erro: Usuário ou senha incorretos.");
@@ -48,7 +43,6 @@ public class Login {
         return true;
     }
 
-    // Getters and Setters (opcionais, caso queira mudar o usuário/senha padrão)
     public String getUsuario() {
         return usuario;
     }
