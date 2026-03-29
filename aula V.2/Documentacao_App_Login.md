@@ -7,32 +7,70 @@
 
 ---
 
-## Diagrama UML
+## Diagrama de Classes (Estrutural)
 
-Abaixo está o diagrama de classes da aplicação, demonstrando a estrutura do padrão de projeto Singleton.
+Abaixo está o diagrama de classes da aplicação, detalhando os atributos, métodos e demonstrando a estrutura do padrão de projeto em evidência (**Singleton**).
 
 ```mermaid
 classDiagram
+    %% Estilização para o padrão Singleton
     class Login {
-        - static Login instancia
-        - String usuario
-        - String senha
-        - Login()
-        + static Login getInstancia()
-        + String gerarCodigoVerificador()
-        + boolean autenticar(String usuarioDigitado, String senhaDigitada, String codigoDigitado, String codigoGerado)
-        + String getUsuario()
-        + void setUsuario(String usuario)
-        + String getSenha()
-        + void setSenha(String senha)
+        <<Singleton>>
+        -static Login instancia
+        -String usuario
+        -String senha
+        -Login()
+        +static getInstancia() Login
+        +gerarCodigoVerificador() String
+        +autenticar(usuarioDigitado: String, senhaDigitada: String, codigoDigitado: String, codigoGerado: String) boolean
+        +getUsuario() String
+        +setUsuario(usuario: String) void
+        +getSenha() String
+        +setSenha(senha: String) void
     }
 
     class App {
-        + static void main(String[] args)
+        +static main(args: String[]) void
     }
 
-    App ..> Login : uses
+    App ..> Login : Solicita Instância Mestra
 ```
+
+---
+
+## Diagrama de Sequência (Comportamental)
+
+Abaixo apresentamos o fluxo de interação e o processo de verificação antibot no momento do Login. É um excelente complemento para entender o papel de cada parte da aplicação em tempo de execução.
+
+```mermaid
+sequenceDiagram
+    actor Usuario
+    participant App
+    participant Login as Login (Singleton)
+
+    App->>Login: Login.getInstancia()
+    Login-->>App: retorna instancia única
+    
+    Usuario->>App: Digita "usuario" e "senha"
+    
+    App->>Login: gerarCodigoVerificador()
+    Login-->>App: retorna "codigoGerado"
+    
+    App->>Usuario: Exibe desafio Anti-Bot (codigo)
+    Usuario->>App: Digita "codigoDigitado"
+    
+    App->>Login: autenticar(user, pass, codDigitado, codGerado)
+    
+    alt Credenciais e Captcha corretos
+        Login-->>App: retorna true
+        App->>Usuario: Exibe "Acesso concedido" e mensagem de bem-vindo
+    else Credenciais ou Captcha incorretos
+        Login-->>App: retorna false
+        App->>Usuario: Exibe "Acesso negado" e mensagem de erro
+    end
+```
+
+---
 
 ## Como Exportar este arquivo para PDF no VS Code
 
