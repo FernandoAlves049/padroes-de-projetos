@@ -1,0 +1,74 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.1 Chrome/142.0.7444.265 Electron/39.8.0 Safari/537.36" version="29.6.1">
+  <diagram name="Página-1" id="OIiz2LgZVbTk_5sftDBr">
+    <mxGraphModel dx="1281" dy="660" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-1" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=47.2;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;" value="App" vertex="1">
+          <mxGeometry height="102.2" width="226" x="118" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-2" parent="qIOAYLTxT2nRtImGVPZg-1" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="8" width="226" y="47.2" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-3" parent="qIOAYLTxT2nRtImGVPZg-1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="+main(String[] args) : void" vertex="1">
+          <mxGeometry height="47" width="226" y="55.2" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-4" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=36.8;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;" value="DatabaseConnectionManager" vertex="1">
+          <mxGeometry height="192.8" width="512" x="147" y="444" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-5" parent="qIOAYLTxT2nRtImGVPZg-4" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-static volatile DatabaseConnectionManager instance" vertex="1">
+          <mxGeometry height="37" width="512" y="36.8" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-6" parent="qIOAYLTxT2nRtImGVPZg-4" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="8" width="512" y="73.8" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-7" parent="qIOAYLTxT2nRtImGVPZg-4" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="-DatabaseConnectionManager()" vertex="1">
+          <mxGeometry height="37" width="512" y="81.8" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-8" parent="qIOAYLTxT2nRtImGVPZg-4" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="+static getInstance() : DatabaseConnectionManager" vertex="1">
+          <mxGeometry height="37" width="512" y="118.8" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-9" parent="qIOAYLTxT2nRtImGVPZg-4" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="+executeQuery(String threadName) : void" vertex="1">
+          <mxGeometry height="37" width="512" y="155.8" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-10" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40.57142857142857;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;" value="DatabaseAccessThread" vertex="1">
+          <mxGeometry height="130.57142857142856" width="378" x="42" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-11" parent="qIOAYLTxT2nRtImGVPZg-10" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="8" width="378" y="40.57142857142857" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-12" parent="qIOAYLTxT2nRtImGVPZg-10" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="+DatabaseAccessThread(String name)" vertex="1">
+          <mxGeometry height="41" width="378" y="48.57142857142857" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-13" parent="qIOAYLTxT2nRtImGVPZg-10" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" value="+run() : void" vertex="1">
+          <mxGeometry height="41" width="378" y="89.57142857142857" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-14" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=38;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;" value="Thread" vertex="1">
+          <mxGeometry height="57" width="77" x="20" y="498" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-15" parent="qIOAYLTxT2nRtImGVPZg-14" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1">
+          <mxGeometry height="19" width="77" y="38" as="geometry" />
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-16" edge="1" parent="1" source="qIOAYLTxT2nRtImGVPZg-10" style="curved=1;startArrow=none;endArrow=block;endSize=16;endFill=0;exitX=0.19;exitY=1;entryX=0.5;entryY=0;rounded=0;" target="qIOAYLTxT2nRtImGVPZg-14" value="herda">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="59" y="407" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-17" edge="1" parent="1" source="qIOAYLTxT2nRtImGVPZg-10" style="curved=1;dashed=1;startArrow=none;endArrow=open;endSize=12;exitX=0.8;exitY=1;entryX=0.5;entryY=0;rounded=0;" target="qIOAYLTxT2nRtImGVPZg-4" value="usa">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="403" y="407" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="qIOAYLTxT2nRtImGVPZg-18" edge="1" parent="1" source="qIOAYLTxT2nRtImGVPZg-1" style="curved=1;dashed=1;startArrow=none;endArrow=open;endSize=12;exitX=0.5;exitY=1;entryX=0.5;entryY=0;rounded=0;" target="qIOAYLTxT2nRtImGVPZg-10" value="cria/inicia">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
