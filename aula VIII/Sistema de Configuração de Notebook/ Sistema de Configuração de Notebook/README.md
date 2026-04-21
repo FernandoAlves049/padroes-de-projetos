@@ -69,64 +69,66 @@ Use o bloco abaixo em um renderizador Mermaid:
 
 ```mermaid
 classDiagram
-		class App {
-			+main(args: String[]) void
-			-exibirConfiguracao(titulo: String, notebook: Notebook) void
-		}
 
-		class Notebook {
-			<<abstract>>
-			-processador: String
-			-memoriaRam: String
-			-armazenamento: String
-			-placaDeVideo: String
-			-sistemaOperacional: String
-			+getProcessador() String
-			+getMemoriaRam() String
-			+getArmazenamento() String
-			+getPlacaDeVideo() String
-			+getSistemaOperacional() String
-			+toString() String
-		}
+class Notebook {
+  <<abstract>>
+  -String processador
+  -String memoriaRam
+  -String armazenamento
+  -String placaDeVideo
+  -String sistemaOperacional
+  +String getProcessador()
+  +String getMemoriaRam()
+  +String getArmazenamento()
+  +String getPlacaDeVideo()
+  +String getSistemaOperacional()
+  +String toString()
+}
 
-		class NotebookBuilder {
-			<<abstract>>
-			-processador: String
-			-memoriaRam: String
-			-armazenamento: String
-			-placaDeVideo: String
-			-sistemaOperacional: String
-			+comProcessador(processador: String) T
-			+comMemoriaRam(memoriaRam: String) T
-			+comArmazenamento(armazenamento: String) T
-			+comPlacaDeVideo(placaDeVideo: String) T
-			+comSistemaOperacional(sistemaOperacional: String) T
-			+build() Notebook
-			#self() T
-			#validarCamposObrigatorios() void
-		}
+class NotebookBuilder {
+  <<abstract>>
+  -String processador
+  -String memoriaRam
+  -String armazenamento
+  -String placaDeVideo
+  -String sistemaOperacional
+  +comProcessador(processador) 
+  +comMemoriaRam(memoriaRam)
+  +comArmazenamento(armazenamento)
+  +comPlacaDeVideo(placaDeVideo)
+  +comSistemaOperacional(sistemaOperacional)
+  +build()
+  #self()
+  #validarCamposObrigatorios()
+}
 
-		class NotebookGamer
-		class NotebookTrabalho
+class NotebookGamer {
+  <<final>>
+}
 
-		class NotebookGamerBuilder {
-			+build() NotebookGamer
-			#self() Builder
-		}
+class NotebookTrabalho {
+  <<final>>
+}
 
-		class NotebookTrabalhoBuilder {
-			+build() NotebookTrabalho
-			#self() Builder
-		}
+class NotebookGamerBuilder {
+  +build()
+  #self()
+}
 
-		Notebook <|-- NotebookGamer
-		Notebook <|-- NotebookTrabalho
-		Notebook *-- NotebookBuilder : inner class
-		NotebookBuilder <|-- NotebookGamerBuilder
-		NotebookBuilder <|-- NotebookTrabalhoBuilder
-		NotebookGamer *-- NotebookGamerBuilder : inner class
-		NotebookTrabalho *-- NotebookTrabalhoBuilder : inner class
-		App --> Notebook : usa
-		App --> NotebookGamerBuilder : instancia
-		App --> NotebookTrabalhoBuilder : instancia
+class NotebookTrabalhoBuilder {
+  +build()
+  #self()
+}
+
+class App
+
+Notebook <|-- NotebookGamer
+Notebook <|-- NotebookTrabalho
+
+NotebookBuilder <|-- NotebookGamerBuilder
+NotebookBuilder <|-- NotebookTrabalhoBuilder
+
+App --> Notebook : usa
+App --> NotebookGamerBuilder : instancia
+App --> NotebookTrabalhoBuilder : instancia
 ```
