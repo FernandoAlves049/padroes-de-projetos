@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Streaming Observer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body class="bg-page">
+<nav class="navbar navbar-dark app-navbar shadow-sm sticky-top">
+    <div class="container-fluid">
+        <button class="btn btn-link text-white text-decoration-none p-0 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuLateral" aria-controls="menuLateral">
+            <span class="menu-icon">☰</span>
+        </button>
+        <div>
+            <div class="navbar-brand fw-semibold mb-0">Streaming Observer</div>
+            <small class="navbar-subtitle">Plataforma de vídeos com notificação por gênero</small>
+        </div>
+    </div>
+</nav>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title fw-semibold" id="menuLateralLabel">☰ MENU</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+    </div>
+    <div class="offcanvas-body">
+        <nav class="nav flex-column gap-1 menu-nav">
+            <a class="nav-link" href="#dashboard">🏠 Dashboard</a>
+            <a class="nav-link" href="#usuarios">👥 Usuários</a>
+            <a class="nav-link" href="#conteudos">🎬 Filmes e Séries</a>
+            <a class="nav-link" href="#notificacoes">🔔 Notificações</a>
+            <a class="nav-link" th:href="@{/uml}">📐 UML</a>
+            <a class="nav-link" th:href="@{/observer}">📖 Padrão Observer</a>
+            <a class="nav-link" th:href="@{/sobre}">ℹ️ Sobre o Projeto</a>
+        </nav>
+    </div>
+</div>
+
+<main class="container-fluid px-3 px-lg-4 py-4">
+    <section class="hero-banner mb-4">
+        <div>
+            <span class="hero-kicker">Interface simples, clara e apresentável</span>
+            <h1 class="display-6 fw-bold mb-2">Streaming Observer</h1>
+            <p class="hero-text mb-0">Cadastre usuários, escolha gêneros, publique filmes e séries e veja as notificações funcionando em tempo real com o padrão Observer.</p>
+        </div>
+        <div class="hero-side">
+            <a class="btn btn-outline-light btn-sm" href="#usuarios">Cadastrar usuário</a>
+            <a class="btn btn-light btn-sm" href="#conteudos">Cadastrar conteúdo</a>
+        </div>
+    </section>
+
+    <section id="dashboard" class="mb-4">
+        <div class="section-heading mb-3">
+            <div>
+                <h2 class="h4 mb-1">Dashboard</h2>
+                <p class="text-muted mb-0">Resumo rápido do sistema.</p>
+            </div>
+            <div class="section-chip-group">
+                <span class="section-chip">Observer</span>
+                <span class="section-chip">Gêneros</span>
+                <span class="section-chip">Bootstrap 5</span>
+            </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-6 col-xl-3">
+                <div class="metric-card metric-users">
+                    <div class="metric-icon">👥</div>
+                    <div>
+                        <div class="metric-label">Usuários</div>
+                        <div class="metric-value" th:text="${usersCount}">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="metric-card metric-movies">
+                    <div class="metric-icon">🎬</div>
+                    <div>
+                        <div class="metric-label">Filmes</div>
+                        <div class="metric-value" th:text="${moviesCount}">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="metric-card metric-series">
+                    <div class="metric-icon">📺</div>
+                    <div>
+                        <div class="metric-label">Séries</div>
+                        <div class="metric-value" th:text="${seriesCount}">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-xl-3">
+                <div class="metric-card metric-notifications">
+                    <div class="metric-icon">🔔</div>
+                    <div>
+                        <div class="metric-label">Notificações</div>
+                        <div class="metric-value" th:text="${notificationsCount}">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="row g-4">
+        <div class="col-12 col-xxl-7">
+            <section id="usuarios" class="panel-section mb-4">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="h4 mb-1">👥 Usuários</h2>
+                        <p class="text-muted mb-0">Cadastro por gêneros de interesse.</p>
+                    </div>
+                    <span class="panel-badge">Cadastro</span>
+                </div>
+
+                <div class="panel-body">
+                    <form th:action="@{/usuarios}" method="post" class="row g-3 mb-4">
+                        <div class="col-12 col-lg-4">
+                            <label for="name" class="form-label">Nome</label>
+                            <input id="name" name="name" class="form-control form-control-lg" placeholder="Ex.: João" required>
+                        </div>
+                        <div class="col-12 col-lg-8">
+                            <div class="form-label">Gêneros de Interesse</div>
+                            <div class="row row-cols-2 row-cols-md-3 g-2">
+                                <div class="col" th:each="genre : ${genres}">
+                                    <label class="interest-pill">
+                                        <input class="form-check-input me-2" type="checkbox" name="genres" th:value="${genre}">
+                                        <span th:text="${genre.label}"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Cadastrar Usuário</button>
+                        </div>
+                    </form>
+
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6" th:each="client : ${clients}">
+                            <article class="entity-card user-card h-100">
+                                <div class="entity-topline">
+                                    <div class="entity-avatar" th:text="${#strings.substring(client.name, 0, 1)}">J</div>
+                                    <div>
+                                        <div class="entity-name" th:text="${client.name}">Nome</div>
+                                        <div class="entity-subtitle">Assinante da plataforma</div>
+                                    </div>
+                                </div>
+                                <div class="tags-wrap mt-3">
+                                    <span class="tag" th:each="genre : ${client.subscribedGenres}" th:text="${genre.label}"></span>
+                                    <span class="text-muted small" th:if="${client.subscribedGenres.isEmpty()}">Sem assinatura</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="col-12 col-xxl-5">
+            <section id="conteudos" class="panel-section mb-4">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="h4 mb-1">🎬 Filmes e Séries</h2>
+                        <p class="text-muted mb-0">Cadastro de novos lançamentos.</p>
+                    </div>
+                    <span class="panel-badge">Conteúdo</span>
+                </div>
+
+                <div class="panel-body">
+                    <form th:action="@{/conteudos}" method="post" class="row g-3 align-items-end mb-4">
+                        <div class="col-12">
+                            <label for="title" class="form-label">Título</label>
+                            <input id="title" name="title" class="form-control form-control-lg" placeholder="Ex.: Velozes e Furiosos 11" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="mediaType" class="form-label">Tipo</label>
+                            <select id="mediaType" name="mediaType" class="form-select form-select-lg">
+                                <option th:each="type : ${mediaTypes}" th:value="${type}" th:text="${type.label}"></option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+                            <label for="genre" class="form-label">Gênero</label>
+                            <select id="genre" name="genre" class="form-select form-select-lg">
+                                <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre.label}"></option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary" type="submit">Adicionar Conteúdo</button>
+                        </div>
+                    </form>
+
+                    <div class="stack-list">
+                        <article class="content-card" th:each="release : ${releases}">
+                            <div class="content-badge" th:text="${release.type.label}">Filme</div>
+                            <div class="content-title" th:text="${release.title}">Título</div>
+                            <div class="content-meta">
+                                <span class="content-dot"></span>
+                                <span th:text="${release.genres.iterator().next().label}">Gênero</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel-section">
+                <div class="panel-head">
+                    <div>
+                        <h2 class="h4 mb-1">🔔 Notificações</h2>
+                        <p class="text-muted mb-0">Registro de eventos do Observer.</p>
+                    </div>
+                    <span class="panel-badge">Log</span>
+                </div>
+
+                <div class="panel-body">
+                    <div th:if="${#lists.isEmpty(notifications)}" class="empty-state">Nenhuma notificação ainda.</div>
+                    <div th:unless="${#lists.isEmpty(notifications)}" class="notification-log">
+                        <div class="notification-item" th:each="notification : ${notifications}">
+                            <div class="notification-mark"></div>
+                            <div class="notification-text" th:text="${notification}"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
